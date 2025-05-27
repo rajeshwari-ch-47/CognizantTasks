@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>User Preferences</title>
+</head>
+<body>
+    <h2>Choose Event Type</h2>
+    <select id="eventType" onchange="savePreference()">
+        <option value="">Select Event</option>
+        <option value="conference">Conference</option>
+        <option value="workshop">Workshop</option>
+        <option value="meetup">Meetup</option>
+    </select>
+
+    <button onclick="clearPreferences()">Clear Preferences</button>
+
+   

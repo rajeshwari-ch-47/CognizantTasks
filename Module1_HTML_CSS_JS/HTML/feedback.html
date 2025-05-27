@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Event Feedback</title>
+</head>
+<body>
+    <h2>Event Feedback</h2>
+    <form>
+        Phone: <input type="text" id="phone" onblur="validatePhone()" placeholder="123-456-7890" /><br><br>
+
+        Event Fee:
+        <select id="eventFee" onchange="showFee()">
+            <option value="">Select Event</option>
+            <option value="10">Concert - $10</option>
+            <option value="20">Workshop - $20</option>
+            <option value="0">Free Meetup</option>
+        </select>
+        <p id="feeDisplay"></p>
+
+        <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+
+        <p>Double-click the image to enlarge:</p>
+        <img src="event.jpg" alt="Event" ondblclick="enlargeImage(this)" style="width:100px;cursor:pointer;" />
+
+        <br><br>
+        Feedback:<br>
+        <textarea id="feedback" onkeyup="countChars()" rows="4" cols="50"></textarea>
+        <p>Characters typed: <span id="charCount">0</span></p>
+    </form>
+
+    <script>
+        function validatePhone() {
+            const phone = document.getElementById('phone').value;
+            const phonePattern = /^\d{3}-\d{3}-\d{4}$/;
+            if (!phonePattern.test(phone)) {
+                alert('Please enter a valid phone number (e.g., 123-456-7890)');
+            }
+        }
+        function showFee() {
+            const fee = document.getElementById('eventFee').value;
+            document.getElementById('feeDisplay').textContent = fee ? `Event Fee: $${fee}` : '';
+        }
+        function submitFeedback() {
+            alert('Thank you for your feedback!');
+        }
+        function enlargeImage(img) {
+            img.style.width = img.style.width === '100px' ? '300px' : '100px';
+        }
+        function countChars() {
+            const length = document.getElementById('feedback').value.length;
+            document.getElementById('charCount').textContent = length;
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,10 @@
+Bootstrap Folder Structure:
+
+bootstrap/
+├── css/              # Contains Bootstrap stylesheets (bootstrap.min.css, etc.)
+├── js/               # Contains Bootstrap JavaScript plugins (bootstrap.bundle.min.js)
+├── icons/ (optional) # Contains SVG icons if downloaded separately
+
+- css/bootstrap.min.css: Core CSS styles.
+- js/bootstrap.bundle.min.js: Includes Bootstrap JS + Popper.
+- icons/: Contains SVG icon set used with Bootstrap Icons.

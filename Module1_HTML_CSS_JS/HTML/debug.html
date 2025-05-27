@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Debugging Example</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: coral;
+      margin: 20px auto;
+    }
+  </style>
+</head>
+<body>
+  <h2>Debugging Example</h2>
+
+  <div id="box"></div>
+
+  <script>
+    // Log message to console
+    console.log("Page loaded.");
+
+    // Change color after 2 seconds
+    setTimeout(() => {
+      let box = document.getElementById('box');
+      box.style.backgroundColor = 'lightgreen';
+      console.log("Box color changed.");
+    }, 2000);
+
+    // Intentional error to debug
+    function faultyFunction() {
+      // Uncomment the next line to cause an error
+      // nonexistentFunctionCall();
+    }
+
+    faultyFunction();
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find Nearby Events</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    #coords {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    #error {
+      color: red;
+      margin-top: 15px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Find Nearby Events</h2>
+  <button id="findBtn">Find Nearby Events</button>
+
+  <div id="coords"></div>
+  <div id="error"></div>
+
+  <script>
+    const findBtn = document.getElementById('findBtn');
+    const coordsDiv = document.getElementById('coords');
+    const errorDiv = document.getElementById('error');
+
+    findBtn.addEventListener('click', () => {
+      coordsDiv.textContent = '';
+      errorDiv.textContent = '';
+
+      if (!navigator.geolocation) {
+        errorDiv.textContent = 'Geolocation is not supported by your browser.';
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          coordsDiv.textContent = `Latitude: ${latitude.toFixed(5)}, Longitude: ${longitude.toFixed(5)}`;
+        },
+        (error) => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              errorDiv.textContent = 'Permission denied. Please allow location access.';
+              break;
+            case error.POSITION_UNAVAILABLE:
+              errorDiv.textContent = 'Position unavailable.';
+              break;
+            case error.TIMEOUT:
+              errorDiv.textContent = 'Request timed out. Try again.';
+              break;
+            default:
+              errorDiv.textContent = 'An unknown error occurred.';
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    });
+  </script>
+</body>
+</html>

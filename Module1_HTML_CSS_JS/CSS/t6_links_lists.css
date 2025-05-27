@@ -1,0 +1,23 @@
+/* Link styles */
+a:link {
+  color: #006699;
+}
+a:visited {
+  color: #004466;
+}
+a:hover {
+  color: #00ccff;
+}
+a:active {
+  color: #ff6600;
+}
+
+/* Navigation menu list */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+nav li {
+  display: inline-block;
+  margin: 0 15px;
+}
